@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from app.api.v1.router import api_router
+from app.db import Base, engine 
 
 app = FastAPI(
     title="Mi Proyecto FastAPI",
@@ -7,3 +8,5 @@ app = FastAPI(
 )
 
 app.include_router(api_router, prefix="/api/v1")
+
+Base.metadata.create_all(bind=engine)
