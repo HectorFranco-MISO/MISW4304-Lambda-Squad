@@ -3,7 +3,7 @@ from app.api.v1.router import api_router
 from app.db import Base, engine 
 
 app = FastAPI(
-    title="Mi Proyecto FastAPI",
+    title="AWS Beanstalk - Lambda Squad",
     version="1.0.0"
 )
 

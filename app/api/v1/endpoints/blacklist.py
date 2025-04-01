@@ -12,6 +12,8 @@ router = APIRouter()
 
 @router.post(
     "/",
+    name="Add e-mail to Blacklist",
+    description="Add an e-mail to the Blacklist",
     dependencies=[Depends(TokenValidator())],
     status_code=status.HTTP_201_CREATED)
 def blacklist_email(
