@@ -5,9 +5,8 @@ from app.services.health import check_health
 
 router = APIRouter()
 
-
 @router.get(
-    "/",
+    "/health",
     name="Check health service",
     description="Check the health of the microservice.",
     status_code=status.HTTP_200_OK,
