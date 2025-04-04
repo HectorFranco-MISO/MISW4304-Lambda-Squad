@@ -2,6 +2,13 @@
 
 ## Integrantes
 
+| Nombre                 | Email                          |
+| ---------------------- | ------------------------------ |
+| Héctor Oswaldo Franco  | h.franco@uniandes.edu.co       |
+| Manuel Felipe Bejarano | mf.bejaranob1@uniandes.edu.co  |
+| Juan Sebastián Vargas  | js.vargasq1@uniandes.edu.co    |
+| María Camila Martínez  | mc.martinezm12@uniandes.edu.co |
+
 ## Configurar ambiente
 
 ### Crear ambiente virtual
