@@ -25,6 +25,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+.idea/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -129,6 +130,7 @@ celerybeat.pid
 
 # Environments
 .env
+.env.development
 .venv
 env/
 venv/
@@ -172,3 +174,7 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+
+# Databases
+*.db
