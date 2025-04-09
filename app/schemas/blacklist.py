@@ -4,7 +4,7 @@ from typing import Optional
 
 class BlacklistRequest(BaseModel):
     email: EmailStr
-    app_uuid: UUID4
+    app_uuid: str
     blocked_reason: Optional[constr(max_length=255)] = None
 
 

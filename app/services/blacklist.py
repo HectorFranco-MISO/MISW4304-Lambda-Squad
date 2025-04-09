@@ -19,6 +19,7 @@ def add_to_blacklist(db: Session, data: BlacklistRequest, ip_address: str):
 
 
 def check_email(db: Session, email: str):
+    print(f"check_email fue llamado con db={db} y email={email}")
     entry = db.query(BlacklistedEmail).filter(BlacklistedEmail.email == email).first()
     if entry:
         return GetBlacklistResponse(blacklisted=True, blocked_reason=str(entry.blocked_reason))
