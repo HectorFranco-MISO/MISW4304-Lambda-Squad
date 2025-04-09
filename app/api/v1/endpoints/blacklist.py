@@ -23,14 +23,17 @@ def blacklist_email(
 ):
     client_ip = request.client.host
     entry = add_to_blacklist(db, payload, client_ip)
-    return JSONResponse(content={
-        "id": str(entry.id),
-        "email": entry.email,
-        "app_uuid": str(entry.app_uuid),
-        "reason": entry.blocked_reason,
-        "ip_address": entry.ip_address,
-        "created_at": entry.created_at.isoformat()
-    })
+    return JSONResponse(
+        content={
+            "id": str(entry.id),
+            "email": entry.email,
+            "app_uuid": str(entry.app_uuid),
+            "reason": entry.blocked_reason,
+            "ip_address": entry.ip_address,
+            "created_at": entry.created_at.isoformat()
+        },
+        status_code=status.HTTP_201_CREATED
+    )
 
 
 @router.get(
