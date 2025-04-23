@@ -1,0 +1,16 @@
+version: "0.2"
+phases:
+  pre_build:
+    commands:
+      - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 408828050075.dkr.ecr.us-east-2.amazonaws.com
+  build:
+    commands:
+      - python -m pip install --upgrade pip
+      - pip install -r requirements.txt
+      - pytest
+      - docker build -t $ImageName -f ./Dockerfile .
+      - docker images
+  post_build:
+    commands:
+      - docker tag $ImageName:latest 408828050075.dkr.ecr.us-east-2.amazonaws.com/$ImageName:latest
+      - docker push 408828050075.dkr.ecr.us-east-2.amazonaws.com/$ImageName:latest
