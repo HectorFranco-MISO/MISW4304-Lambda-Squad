@@ -1,6 +1,8 @@
+import os
+
 from fastapi import FastAPI
 from app.api.v1.router import api_router
-from app.db import Base, engine 
+from app.db import Base, engine
 
 app = FastAPI(
     title="AWS Beanstalk - Lambda Squad",
@@ -9,4 +11,5 @@ app = FastAPI(
 
 app.include_router(api_router)
 
-Base.metadata.create_all(bind=engine)
+if os.getenv("TESTING") != "true":
+    Base.metadata.create_all(bind=engine)
