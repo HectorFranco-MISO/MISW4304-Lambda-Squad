@@ -1,16 +1,22 @@
 version: "0.2"
+env:
+  variables:
+    TESTING: "true"
+    SECRET_TOKEN: "bGFtYmRhX3NxdWFk"
 phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - pip install -r requirements.txt
   pre_build:
     commands:
       - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 408828050075.dkr.ecr.us-east-2.amazonaws.com
   build:
     commands:
-      - python -m pip install --upgrade pip
-      - pip install -r requirements.txt
       - pytest
-      - docker build -t $ImageName -f ./Dockerfile .
-      - docker images
+      - docker build -t entrega-2-repository -f ./Dockerfile .
   post_build:
     commands:
-      - docker tag $ImageName:latest 408828050075.dkr.ecr.us-east-2.amazonaws.com/$ImageName:latest
-      - docker push 408828050075.dkr.ecr.us-east-2.amazonaws.com/$ImageName:latest
+      - docker tag entrega-2-repository:latest 408828050075.dkr.ecr.us-east-2.amazonaws.com/entrega-2-repository:latest
+      - docker push 408828050075.dkr.ecr.us-east-2.amazonaws.com/entrega-2-repository:latest
