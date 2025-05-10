@@ -20,3 +20,19 @@ phases:
     commands:
       - docker tag entrega-2-repository:latest 408828050075.dkr.ecr.us-east-2.amazonaws.com/entrega-2-repository:latest
       - docker push 408828050075.dkr.ecr.us-east-2.amazonaws.com/entrega-2-repository:latest
+      - printf '[{"name":"Container-Entrega-3","imageUri":"408828050075.dkr.ecr.us-east-2.amazonaws.com/entrega-2-repository:latest"}]' > imagedefinitions.json
+      - printf '{"ImageURI":"408828050075.dkr.ecr.us-east-2.amazonaws.com/entrega-2-repository:latest"}' > imageDetail.json
+      - cat imagedefinitions.json
+artifacts:
+  files:
+    - '**/*'
+    - imagedefinitions.json
+    - imageDetail.json
+  secondary-artifacts:
+    DefinitionArtifact:
+      files:
+        - appspec.yaml
+        - taskdef.json
+    ImageArtifact:
+      files:
+        - imageDetail.json

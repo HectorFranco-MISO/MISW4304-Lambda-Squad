@@ -11,7 +11,15 @@ COPY requirements.txt .
 RUN python -m pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
 # Copy the application source code to the container
-COPY ./app /app/src
+COPY ./app /app/app
+
+# Set environment variables
+ENV RDS_USERNAME=postgres \
+    RDS_PASSWORD=entrega-3 \
+    RDS_HOSTNAME=project-db.c67kg4ccgju8.us-east-1.rds.amazonaws.com \
+    RDS_PORT=5432 \
+    RDS_DB_NAME=postgres \
+    SECRET_TOKEN=bGFtYmRhX3NxdWFk
 
 # Create a new user 'appuser' with user ID 5678, disable password, and change ownership of /app to appuser
 RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
@@ -23,4 +31,4 @@ USER appuser
 EXPOSE 3000
 
 # Command to run the application using Uvicorn
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "3000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "3000"]
