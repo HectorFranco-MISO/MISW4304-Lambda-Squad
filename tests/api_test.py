@@ -95,7 +95,7 @@ def test_get_blacklist_email_not_found(client, mock_db):
 
         # Verificar la respuesta del endpoint
         assert response.status_code == 200
-        assert response.json()['blacklisted'] is True
+        assert response.json()['blacklisted'] is False
 
 
 def test_get_blacklist_email_invalid_token(client):
