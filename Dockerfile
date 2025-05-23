@@ -15,8 +15,8 @@ COPY ./app /app/app
 
 # Set environment variables
 ENV RDS_USERNAME=postgres \
-    RDS_PASSWORD=entrega-3 \
-    RDS_HOSTNAME=project-db.c67kg4ccgju8.us-east-1.rds.amazonaws.com \
+    RDS_PASSWORD=entrega-4 \
+    RDS_HOSTNAME=database-entrega-4.crkgma2w6ksq.us-east-2.rds.amazonaws.com \
     RDS_PORT=5432 \
     RDS_DB_NAME=postgres \
     SECRET_TOKEN=bGFtYmRhX3NxdWFk
