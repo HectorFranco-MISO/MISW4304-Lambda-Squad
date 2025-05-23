@@ -6,9 +6,10 @@ from app.schemas.blacklist import BlacklistRequest, GenericResponse, GetBlacklis
 from app.services.blacklist import add_to_blacklist, check_email
 from app.dependencies import get_db
 from sqlalchemy.orm import Session
+import newrelic.agent
 
 router = APIRouter()
-
+newrelic.agent.initialize()
 
 @router.post(
     "/",
